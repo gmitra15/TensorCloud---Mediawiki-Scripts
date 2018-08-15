@@ -52,5 +52,5 @@ fi
 if [ ! -z "${WP_OAUTH_SECRET}" ]; then #-s
     sed -i "/\$wgOAuth2Client\['client'\]\['secret'\] =/d" ./test_replace.txt
     sed -i "/\$wgOAuth2Client\['client'\]\['id'\]     = /a \$wgOAuth2Client['client']['secret'] = '$WP_OAUTH_SECRET'; // The client secret assigned to you by the provider" ./test_replace.txt
-    echo "Entered Wordpress OAuth Secret: $WP_OAUTH_SECRET"
+    echo "Set Wordpress OAuth Secret: $WP_OAUTH_SECRET"
 fi
