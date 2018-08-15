@@ -34,7 +34,6 @@ while getopts ":p:k:w:s:h" opt; do
   esac
 done
 
-#sed -i 's/\$wgPiwikURL = \".*+\";/\$wgPiwikURL = "doremi";/g' ./test_replace.txt
 if [ ! -z "${PIWIK_URL}" ]; then #-p
     sed -i '/\$wgPiwikURL =/d' ./test_replace.txt
     sed -i "/wfLoadExtension( 'Piwik' );/a \$wgPiwikURL = '$PIWIK_URL';" ./test_replace.txt
