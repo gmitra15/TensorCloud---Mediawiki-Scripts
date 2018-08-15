@@ -35,22 +35,22 @@ while getopts ":p:k:w:s:h" opt; do
 done
 
 if [ ! -z "${PIWIK_URL}" ]; then #-p
-    sed -i '/\$wgPiwikURL =/d' ./test_replace.txt
-    sed -i "/wfLoadExtension( 'Piwik' );/a \$wgPiwikURL = '$PIWIK_URL';" ./test_replace.txt
+    sed -i '/\$wgPiwikURL =/d' ./LocalSettings.php
+    sed -i "/wfLoadExtension( 'Piwik' );/a \$wgPiwikURL = '$PIWIK_URL';" ./LocalSettings.php
     echo "Set Piwik URL: $PIWIK_URL"
 fi
 if [ ! -z "${PIWIK_ID_NUMBER}" ]; then #-k
-    sed -i '/\$wgPiwikIDSite =/d' ./test_replace.txt
-    sed -i "/\$wgPiwikURL =/a \$wgPiwikIDSite = '$PIWIK_ID_NUMBER';" ./test_replace.txt
+    sed -i '/\$wgPiwikIDSite =/d' ./LocalSettings.php
+    sed -i "/\$wgPiwikURL =/a \$wgPiwikIDSite = '$PIWIK_ID_NUMBER';" ./LocalSettings.php
     echo "Set Piwik ID Number: $PIWIK_ID_NUMBER"
 fi
 if [ ! -z "${WP_OAUTH_ID}" ]; then #-w
-    sed -i "/\$wgOAuth2Client\['client'\]\['id'\]     = /d" ./test_replace.txt
-    sed -i "/wfLoadExtension( 'MW-OAuth2Client' );/a \$wgOAuth2Client['client']['id']     = '$WP_OAUTH_ID'; // The client ID assigned to you by the provider" ./test_replace.txt
+    sed -i "/\$wgOAuth2Client\['client'\]\['id'\]     = /d" ./LocalSettings.php
+    sed -i "/wfLoadExtension( 'MW-OAuth2Client' );/a \$wgOAuth2Client['client']['id']     = '$WP_OAUTH_ID'; // The client ID assigned to you by the provider" ./LocalSettings.php
     echo "Set Wordpress OAuth ID: $WP_OAUTH_ID"
 fi
 if [ ! -z "${WP_OAUTH_SECRET}" ]; then #-s
-    sed -i "/\$wgOAuth2Client\['client'\]\['secret'\] =/d" ./test_replace.txt
-    sed -i "/\$wgOAuth2Client\['client'\]\['id'\]     = /a \$wgOAuth2Client['client']['secret'] = '$WP_OAUTH_SECRET'; // The client secret assigned to you by the provider" ./test_replace.txt
+    sed -i "/\$wgOAuth2Client\['client'\]\['secret'\] =/d" ./LocalSettings.php
+    sed -i "/\$wgOAuth2Client\['client'\]\['id'\]     = /a \$wgOAuth2Client['client']['secret'] = '$WP_OAUTH_SECRET'; // The client secret assigned to you by the provider" ./LocalSettings.php
     echo "Set Wordpress OAuth Secret: $WP_OAUTH_SECRET"
 fi
